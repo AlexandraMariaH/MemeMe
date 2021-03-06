@@ -16,28 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="aVT-Un-bmw">
-                                <rect key="frame" x="0.0" y="0.0" width="351" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVT-Un-bmw">
+                                <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="9k6-yZ-P0Y">
-                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9k6-yZ-P0Y">
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" id="iV1-Z1-Peg" userLabel="&quot;Top&quot;">
-                                <rect key="frame" x="10" y="65" width="355" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-Z1-Peg" userLabel="&quot;Top&quot;">
+                                <rect key="frame" x="10" y="109" width="370" height="18.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="IXb-Be-NBZ" userLabel="&quot;Bottom&quot;">
-                                <rect key="frame" x="10" y="589" width="390" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="IXb-Be-NBZ" userLabel="&quot;Bottom&quot;">
+                                <rect key="frame" x="10" y="698.33333333333337" width="370" height="18.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2sn-gv-HHk">
-                                <rect key="frame" x="0.0" y="731" width="351" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sn-gv-HHk">
+                                <rect key="frame" x="0.0" y="761" width="390" height="49"/>
                                 <items>
                                     <barButtonItem title="Pick" id="P5L-uu-rop">
                                         <connections>
@@ -64,9 +60,9 @@
                             <constraint firstItem="2sn-gv-HHk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KjC-Z8-nry"/>
                             <constraint firstItem="2sn-gv-HHk" firstAttribute="top" secondItem="IXb-Be-NBZ" secondAttribute="bottom" constant="44" id="Pfj-CR-UY0"/>
                             <constraint firstItem="2sn-gv-HHk" firstAttribute="top" secondItem="9k6-yZ-P0Y" secondAttribute="bottom" id="Wyg-Iq-hBl"/>
-                            <constraint firstItem="IXb-Be-NBZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="10" id="ZBj-qz-8vV"/>
+                            <constraint firstItem="IXb-Be-NBZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="ZBj-qz-8vV"/>
                             <constraint firstItem="iV1-Z1-Peg" firstAttribute="top" secondItem="aVT-Un-bmw" secondAttribute="bottom" constant="21" id="bV2-CX-goQ" userLabel="Safe Area = Navigation Bar.bottom + 21"/>
-                            <constraint firstItem="iV1-Z1-Peg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="10" id="dcQ-dI-JoT"/>
+                            <constraint firstItem="iV1-Z1-Peg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="dcQ-dI-JoT"/>
                             <constraint firstItem="9k6-yZ-P0Y" firstAttribute="top" secondItem="aVT-Un-bmw" secondAttribute="bottom" id="rqn-9m-yQd"/>
                             <constraint firstItem="iV1-Z1-Peg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="sHg-dQ-M4g"/>
                             <constraint firstItem="aVT-Un-bmw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uGg-8I-e3U"/>
