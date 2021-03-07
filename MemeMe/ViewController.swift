@@ -7,16 +7,18 @@
 
 import UIKit
 
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
-   
+    @IBOutlet var albumButton: UIBarButtonItem!
+        
     @IBOutlet var textFieldTop: UITextField!
     @IBOutlet var textFieldBottom: UITextField!
     
-    
+    @IBOutlet var shareButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+        
     let memeTextAttributes: [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -26,7 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
  
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         textFieldTop.text = "TOP"
         textFieldBottom.text = "BOTTOM"
         
@@ -41,7 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
-           cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
        }
@@ -74,7 +76,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
     
-    // Mark: keyboard
     @objc func keyboardWillShow(_ notification:Notification) {
         if textFieldBottom.isEditing {
             view.frame.origin.y = -getKeyboardHeight(notification)
@@ -124,15 +125,60 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             imagePickerView.image = image
-         // FOR WHAT?
-          //  navigationItem.leftBarButtonItem?.isEnabled = true
+            navigationItem.leftBarButtonItem?.isEnabled = true
         }
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        shareButton.isEnabled = true
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    struct Meme {
+           let topText: String
+           let bottomText: String
+           let originalImage: UIImage
+           let memedImage: UIImage
+       }
+    
+    func generateMemedImage() -> UIImage {
 
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+        
+        return memedImage
+    }
+    
+    func save() {
+        _ = Meme(topText: textFieldTop.text!, bottomText: self.textFieldBottom.text!, originalImage: self.imagePickerView.image!, memedImage: generateMemedImage())
+    }
+    
+    @IBAction func share(_ sender: Any) {
+           let sharedImage = generateMemedImage()
+        
+           let activityController = UIActivityViewController(activityItems:    [sharedImage], applicationActivities: nil)
+           self.present(activityController, animated: true, completion: nil)
+           
+           activityController.completionWithItemsHandler = { (activity, success, items, error) in
+                if(success) {
+                    self.save()
+                }
+           }
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        shareButton.isEnabled = false
+        imagePickerView.image = nil
+        textFieldTop.text = "TOP"
+        textFieldBottom.text = "BOTTOM"
+    }
 }
-

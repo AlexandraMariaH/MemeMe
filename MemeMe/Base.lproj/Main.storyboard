@@ -18,9 +18,41 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVT-Un-bmw">
                                 <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                                <items>
+                                    <navigationItem id="QkA-fE-rf7">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" id="Ate-Rf-uKU">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eCe-k8-3LH">
+                                                <rect key="frame" x="16" y="10.666666666666664" width="73" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                                                <connections>
+                                                    <action selector="share:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2FT-Uw-4DD"/>
+                                                </connections>
+                                            </button>
+                                            <connections>
+                                                <action selector="share:" destination="BYZ-38-t0r" id="jOG-lt-SOn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" id="cAP-tb-rsW">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wig-7x-Pcz">
+                                                <rect key="frame" x="288" y="7" width="86" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CKe-q9-P3E"/>
+                                                </connections>
+                                            </button>
+                                            <connections>
+                                                <action selector="cancel:" destination="BYZ-38-t0r" id="tl5-p0-U4Y"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9k6-yZ-P0Y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9k6-yZ-P0Y">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iV1-Z1-Peg" userLabel="&quot;Top&quot;">
                                 <rect key="frame" x="10" y="109" width="370" height="18.666666666666671"/>
@@ -35,16 +67,19 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sn-gv-HHk">
                                 <rect key="frame" x="0.0" y="761" width="390" height="49"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="P5L-uu-rop">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="Z3a-ef-AwD"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Pick from Camera" id="cuL-08-EvL">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="i3u-hh-xix"/>
+                                    <barButtonItem title="Camera Button" image="camera.fill" catalog="system" id="cuL-08-EvL">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="N9T-hk-loX"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6qv-xi-tsU"/>
+                                    <barButtonItem title="Album" id="P5L-uu-rop">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="Z3a-ef-AwD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SIp-B8-LqK"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -70,8 +105,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="albumButton" destination="P5L-uu-rop" id="1Sl-QI-qAR"/>
                         <outlet property="cameraButton" destination="cuL-08-EvL" id="gwC-Wo-v3z"/>
+                        <outlet property="cancelButton" destination="wig-7x-Pcz" id="Vcu-MS-QnM"/>
                         <outlet property="imagePickerView" destination="9k6-yZ-P0Y" id="i9W-XN-Mci"/>
+                        <outlet property="shareButton" destination="eCe-k8-3LH" id="cWh-hK-xwf"/>
                         <outlet property="textFieldBottom" destination="IXb-Be-NBZ" id="v27-ls-fBK"/>
                         <outlet property="textFieldTop" destination="iV1-Z1-Peg" id="Ym0-6Y-uCi"/>
                     </connections>
@@ -82,8 +120,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
