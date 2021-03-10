@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
@@ -29,9 +29,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textFieldTop.text = "TOP"
-        textFieldBottom.text = "BOTTOM"
-        
+        configureTextField()
+
         textFieldTop.delegate = self
         textFieldBottom.delegate = self
       
@@ -135,25 +134,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
     }
     
-    struct Meme {
-           let topText: String
-           let bottomText: String
-           let originalImage: UIImage
-           let memedImage: UIImage
-       }
-    
     func generateMemedImage() -> UIImage {
 
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.navigationBar.isHidden = true
+        hide(true)
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.isHidden = false
+        hide(false)
         
         return memedImage
     }
@@ -178,7 +168,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func cancel(_ sender: Any) {
         shareButton.isEnabled = false
         imagePickerView.image = nil
-        textFieldTop.text = "TOP"
-        textFieldBottom.text = "BOTTOM"
+        configureTextField()
+    }
+    
+    func configureTextField() {
+            textFieldTop.text = "TOP"
+            textFieldBottom.text = "BOTTOM"
+    }
+    
+    func hide(_ doHide: Bool) {
+        if (doHide) {
+            self.tabBarController?.tabBar.isHidden = true
+            self.navigationController?.navigationBar.isHidden = true
+        } else {
+            self.tabBarController?.tabBar.isHidden = false
+            self.navigationController?.navigationBar.isHidden = false
+        }
     }
 }
