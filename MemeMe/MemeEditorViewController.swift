@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Alexandra Hufnagel on 28.02.21.
@@ -31,15 +31,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         configureTextField(textFieldTop, "TOP")
         configureTextField(textFieldBottom, "BOTTOM")
-        
-        textFieldTop.delegate = self
-        textFieldBottom.delegate = self
-        
-        textFieldTop.defaultTextAttributes = memeTextAttributes
-        textFieldBottom.defaultTextAttributes = memeTextAttributes
-        
-        textFieldTop.textAlignment = .center
-        textFieldBottom.textAlignment = .center
     }
     
     // MARK: View appearing / disappearing
@@ -181,13 +172,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // MARK: setting the textfields with its default texts
-    func configureTextField(_ textField: UITextField,_ text: String) {
-        if textField == textFieldTop {
-            textFieldTop.text = "TOP"
-        }
-        if textField == textFieldBottom {
-            textFieldBottom.text = "BOTTOM"
-        }
+    func configureTextField(_ textField: UITextField, _ text: String) {
+            textField.text = text
+            textField.delegate = self
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.textAlignment = .center
     }
     
     // MARK: hiding the tabBar and the navigationBar
