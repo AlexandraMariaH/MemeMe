@@ -12,16 +12,14 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var memes: [Meme]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.memes
+    var memes: [Meme] {
+     return (UIApplication.shared.delegate as! AppDelegate).memes
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
+    
     
     // MARK: Model
     
