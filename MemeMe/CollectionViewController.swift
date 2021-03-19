@@ -2,7 +2,22 @@
 //  CollectionViewController.swift
 //  MemeMe
 //
-//  Created by Alexandra Hufnagel on 19.03.21.
+//  Created by Alexandra Hufnagel on 14.03.21.
 //
 
-import Foundation
+import UIKit
+
+class CollectionViewController: UICollectionViewController {
+    
+    var memes: [Meme]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
