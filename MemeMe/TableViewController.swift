@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Model
     
