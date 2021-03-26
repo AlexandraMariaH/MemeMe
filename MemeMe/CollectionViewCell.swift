@@ -5,4 +5,11 @@
 //  Created by Alexandra Hufnagel on 22.03.21.
 //
 
-import Foundation
+import UIKit
+
+class CollectionViewCell: UICollectionViewCell {
+ 
+    // MARK: Outlets
+    
+    @IBOutlet weak var memeImageView: UIImageView!    
+}

@@ -8,16 +8,60 @@
 import UIKit
 
 class CollectionViewController: UICollectionViewController {
-    
-    var memes: [Meme]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.memes
-    }
+        
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var memes = [Meme]()
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toDoWhenInView()
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        toDoWhenInView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            toDoWhenInView()
+        }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return memes.count
+        }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! CollectionViewCell
+        let meme = memes[(indexPath as NSIndexPath).row]
+
+        // Set the image
+        cell.memeImageView?.image = meme.memedImage
+
+        return cell
+    }
+    
+    
+    func toDoWhenInView() {
+            memes = appDelegate.memes
+            collectionView.reloadData()
+            self.navigationController?.navigationBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+        }
+    
+ 
 }

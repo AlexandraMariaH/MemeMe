@@ -11,48 +11,63 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+   // var memes = [Meme]()
     
-    var memes: [Meme] {
-     return (UIApplication.shared.delegate as! AppDelegate).memes
-    }
+    
+    @IBOutlet weak var gotoEditMeme: UIBarButtonItem!
+    
+    @IBOutlet weak var tableView: UITableView!
+
         
-    override func viewDidLoad() {
+  /*  override func viewDidLoad() {
+        memes = appDelegate.memes
+
         super.viewDidLoad()
+        print(-1, appDelegate.memes.count)
+        tableView.reloadData()
+
+    }*/
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Collection View Will Appear")
+        print(0, appDelegate.memes.count)
+        tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
+
     }
-    
-    
-    // MARK: Model
-    
-   /* let favoriteThings = [
-        "Raindrops on roses",
-        "Whiskers on kittens",
-        "Bright copper kettles",
-        "Warm woolen mittens"
-    ]*/
 
     // MARK: Table View Data Source Methods
     
     // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
-      //  return self.favoriteThings.count
-        return self.memes.count
+        print("1", appDelegate.memes.count)
+
+        return self.appDelegate.memes.count
+
     }
 
     // cell for row at index path
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCell")!
-     //   let favoriteThingForRow = self.favoriteThings[(indexPath as NSIndexPath).row]
-     //   cell.textLabel?.text = favoriteThingForRow
-        
-        let memeForRow = self.memes[(indexPath as NSIndexPath).row]
-        
-        cell.textLabel?.text = "test"
-        cell.imageView?.image = memeForRow.memedImage
-        
-        return cell
+        print("1")
 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCell")!
+     
+        let memeForRow = appDelegate.memes[(indexPath as NSIndexPath).row]
+        
+        print("2")
+
+        cell.textLabel?.text = memeForRow.topText + memeForRow.bottomText
+        cell.imageView?.image = memeForRow.memedImage
+
+        return cell
     }
+    
+   /* func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(identifier: "TableViewController") as! TableViewController
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }*/
+    
 }
 
