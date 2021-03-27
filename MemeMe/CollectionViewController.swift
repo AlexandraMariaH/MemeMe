@@ -63,5 +63,12 @@ class CollectionViewController: UICollectionViewController {
             self.tabBarController?.tabBar.isHidden = false
         }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
+        
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailController.meme = self.memes[(indexPath as NSIndexPath).row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
  
 }

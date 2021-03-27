@@ -52,7 +52,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qyx-xa-85d">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qyx-xa-85d">
                             <size key="itemSize" width="158" height="183"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -60,19 +60,19 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="rSm-jQ-4Vh" customClass="CollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="158" height="183"/>
+                                <rect key="frame" x="0.0" y="0.0" width="187" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aaY-h3-8RF">
-                                    <rect key="frame" x="0.0" y="0.0" width="158" height="183"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vyS-Ba-BBD">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rrQ-cA-vQM">
-                                            <rect key="frame" x="0.0" y="25" width="139" height="139"/>
+                                            <rect key="frame" x="0.0" y="25" width="157" height="163"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="158" height="183"/>
+                                <size key="customSize" width="187" height="200"/>
                                 <connections>
                                     <outlet property="memeImageView" destination="rrQ-cA-vQM" id="rG2-sz-vuN"/>
                                 </connections>
@@ -103,32 +103,32 @@
         <!--Sent Memes Table View Controller-->
         <scene sceneID="isN-S9-AwM">
             <objects>
-                <viewController id="FJc-vN-USp" userLabel="Sent Memes Table View Controller" customClass="TableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TableViewController" title="TableViewController" id="FJc-vN-USp" userLabel="Sent Memes Table View Controller" customClass="TableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiB-ay-ZVu">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HCO-5J-UKn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HCO-5J-UKn">
                                 <rect key="frame" x="16" y="137" width="358" height="479"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" textLabel="86v-Kg-OwX" detailTextLabel="xfH-UW-z0t" style="IBUITableViewCellStyleSubtitle" id="z7L-qf-JrB">
-                                        <rect key="frame" x="0.0" y="28" width="358" height="55.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="358" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z7L-qf-JrB" id="05U-3E-DNL">
-                                            <rect key="frame" x="0.0" y="0.0" width="358" height="55.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="86v-Kg-OwX">
-                                                    <rect key="frame" x="20" y="8.9999999999999982" width="33" height="20.333333333333332"/>
+                                                    <rect key="frame" x="20" y="20" width="33" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xfH-UW-z0t">
-                                                    <rect key="frame" x="19.999999999999996" y="31.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <rect key="frame" x="19.999999999999996" y="43.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -149,7 +149,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="4EQ-ZC-hAg">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="mcw-FF-VAB"/>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="4Uo-hH-AoI">
                             <connections>
                                 <action selector="memeEditor:" destination="FJc-vN-USp" id="5rJ-hp-ldI"/>
@@ -165,6 +164,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnC-bn-gDZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="216.92307692307691" y="283.64928909952607"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="yur-EI-I3T">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="0I2-Xu-m2F" customClass="DetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JqN-vC-3CL">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZX6-za-thn">
+                                <rect key="frame" x="135" y="377" width="120" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="OVR-gv-XYG"/>
+                                    <constraint firstAttribute="width" constant="120" id="tsl-ae-5Ov"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MkH-vR-3ge"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MkH-vR-3ge" firstAttribute="centerY" secondItem="ZX6-za-thn" secondAttribute="centerY" id="qb4-jD-DVV" userLabel="Image View.centerY = centerY"/>
+                            <constraint firstItem="ZX6-za-thn" firstAttribute="centerX" secondItem="JqN-vC-3CL" secondAttribute="centerX" id="wVe-5s-dwf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="ZX6-za-thn" id="cR3-RH-Sbe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Of2-me-eeb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312" y="290"/>
         </scene>
         <!--Table-->
         <scene sceneID="qcH-dI-eGO">
@@ -205,9 +235,6 @@
                                                     <action selector="share:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2FT-Uw-4DD"/>
                                                 </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="share:" destination="BYZ-38-t0r" id="jOG-lt-SOn"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" id="cAP-tb-rsW">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wig-7x-Pcz">
@@ -218,9 +245,6 @@
                                                     <action selector="cancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CKe-q9-P3E"/>
                                                 </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="cancel:" destination="BYZ-38-t0r" id="tl5-p0-U4Y"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>

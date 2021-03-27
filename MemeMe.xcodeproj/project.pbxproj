@@ -19,6 +19,7 @@
 		E013F6972604F2520060865F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013F6962604F2520060865F /* TableViewController.swift */; };
 		E013F6A22604FA9A0060865F /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013F6A12604FA9A0060865F /* CollectionViewController.swift */; };
 		E013F6AF26093DEC0060865F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013F6AE26093DEC0060865F /* CollectionViewCell.swift */; };
+		E013F6B5260F2DA60060865F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013F6B4260F2DA60060865F /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E013F6962604F2520060865F /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E013F6A12604FA9A0060865F /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		E013F6AE26093DEC0060865F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		E013F6B4260F2DA60060865F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				E013F6962604F2520060865F /* TableViewController.swift */,
 				E013F6A12604FA9A0060865F /* CollectionViewController.swift */,
 				E013F6AE26093DEC0060865F /* CollectionViewCell.swift */,
+				E013F6B4260F2DA60060865F /* DetailViewController.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				E004D60A25EBC9DA00BFD65E /* AppDelegate.swift in Sources */,
 				E013F6972604F2520060865F /* TableViewController.swift in Sources */,
 				E004D60C25EBC9DA00BFD65E /* SceneDelegate.swift in Sources */,
+				E013F6B5260F2DA60060865F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print(0, appDelegate.memes.count)
         tableView.reloadData()
         tabBarController?.tabBar.isHidden = false
-
+        navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = true
     }
 
     // MARK: Table View Data Source Methods
@@ -64,10 +65,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-   /* func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = self.storyboard!.instantiateViewController(identifier: "TableViewController") as! TableViewController
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
+        detailController.meme = self.appDelegate.memes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(detailController, animated: true)
-    }*/
+        
+    }
     
 }
 
