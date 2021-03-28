@@ -36,14 +36,15 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            toDoWhenInView()
-        }
+        super.viewWillAppear(animated)
+        toDoWhenInView()
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return memes.count
-        }
+    }
     
+    // MARK: Cell for item at index path
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! CollectionViewCell
@@ -57,12 +58,13 @@ class CollectionViewController: UICollectionViewController {
     
     
     func toDoWhenInView() {
-            memes = appDelegate.memes
-            collectionView.reloadData()
-            self.navigationController?.navigationBar.isHidden = false
-            self.tabBarController?.tabBar.isHidden = false
-        }
+        memes = appDelegate.memes
+        collectionView.reloadData()
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
+    // MARK: Show MemeDetails
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
@@ -70,5 +72,4 @@ class CollectionViewController: UICollectionViewController {
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
- 
 }

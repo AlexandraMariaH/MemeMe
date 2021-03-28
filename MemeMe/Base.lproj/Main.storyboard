@@ -173,21 +173,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZX6-za-thn">
-                                <rect key="frame" x="135" y="377" width="120" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ZX6-za-thn">
+                                <rect key="frame" x="93" y="347" width="204" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="OVR-gv-XYG"/>
-                                    <constraint firstAttribute="width" constant="120" id="tsl-ae-5Ov"/>
+                                    <constraint firstAttribute="height" constant="160" id="OVR-gv-XYG"/>
+                                    <constraint firstAttribute="width" constant="204" id="tsl-ae-5Ov"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MkH-vR-3ge"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MkH-vR-3ge" firstAttribute="centerY" secondItem="ZX6-za-thn" secondAttribute="centerY" id="qb4-jD-DVV" userLabel="Image View.centerY = centerY"/>
+                            <constraint firstAttribute="centerY" secondItem="ZX6-za-thn" secondAttribute="centerY" constant="-5" id="qb4-jD-DVV" userLabel="Image View.centerY = centerY"/>
                             <constraint firstItem="ZX6-za-thn" firstAttribute="centerX" secondItem="JqN-vC-3CL" secondAttribute="centerX" id="wVe-5s-dwf"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="ZX6-za-thn" id="cR3-RH-Sbe"/>
                     </connections>

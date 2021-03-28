@@ -11,65 +11,54 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-   // var memes = [Meme]()
-    
-    
-    @IBOutlet weak var gotoEditMeme: UIBarButtonItem!
-    
-    @IBOutlet weak var tableView: UITableView!
-
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate    
         
-  /*  override func viewDidLoad() {
-        memes = appDelegate.memes
-
-        super.viewDidLoad()
-        print(-1, appDelegate.memes.count)
-        tableView.reloadData()
-
-    }*/
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Collection View Will Appear")
-        print(0, appDelegate.memes.count)
         tableView.reloadData()
         tabBarController?.tabBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
     }
-
-    // MARK: Table View Data Source Methods
     
-    // number of rows
+    // MARK: Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("1", appDelegate.memes.count)
-
         return self.appDelegate.memes.count
-
     }
 
-    // cell for row at index path
+    // MARK: Cell for row at index path
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("1")
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCell")!
      
         let memeForRow = appDelegate.memes[(indexPath as NSIndexPath).row]
         
-        print("2")
-
+        // Set the textlabels for the image
         cell.textLabel?.text = memeForRow.topText + memeForRow.bottomText
+        // Set the image
         cell.imageView?.image = memeForRow.memedImage
 
         return cell
     }
     
+    // MARK: Show MemeDetails
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = self.storyboard!.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
         detailController.meme = self.appDelegate.memes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(detailController, animated: true)
-        
+    }
+    
+    // MARK: Swipe to delete meme
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            appDelegate.memes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
 }
