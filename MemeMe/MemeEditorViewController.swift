@@ -34,7 +34,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         shareButton.isEnabled = false
         
         navigationController?.isNavigationBarHidden = true
-
         
     }
     
@@ -166,7 +165,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let tableViewController = self.storyboard!.instantiateViewController(withIdentifier: "TableViewController") as! TableViewController
         self.navigationController!.pushViewController(tableViewController, animated: true)
         
-
     }
     
     // MARK: share the meme
@@ -181,9 +179,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 self.save()
             }
         }
-        
         hideTabBar(true)
-        
 
     }
     
