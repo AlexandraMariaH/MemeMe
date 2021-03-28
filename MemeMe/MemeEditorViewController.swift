@@ -25,12 +25,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth: -3.0
     ]
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureTextField(textFieldTop, "TOP")
         configureTextField(textFieldBottom, "BOTTOM")
+        shareButton.isEnabled = false
+        hideNavBar(true)
     }
     
     // MARK: View appearing / disappearing
@@ -38,6 +40,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        hideTabBar(true)
+        hideNavBar(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -131,26 +135,36 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // MARK: generate memed images
     func generateMemedImage() -> UIImage {
-        
-        hide(true)
+        print("generate")
         
         UIGraphicsBeginImageContext(view.frame.size)
         view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
-        hide(false)
-        
+               
         return memedImage
     }
     
-    // MARK: save the meme
+    // MARK: create a meme object and save it to the memes array
     func save() {
-        _ = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        print("save")
+
+        hideNavBar(true)
+        hideTabBar(true)
+
+        // Update the meme
+        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+                
+        // Add it to the memes array on the Application Delegate
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+                
+        let tableViewController = self.storyboard!.instantiateViewController(withIdentifier: "TableViewController") as! TableViewController
+        self.navigationController!.pushViewController(tableViewController, animated: true)
     }
     
     // MARK: share the meme
     @IBAction func share(_ sender: Any) {
+        print("share")
         let sharedImage = generateMemedImage()
         
         let activityController = UIActivityViewController(activityItems:    [sharedImage], applicationActivities: nil)
@@ -161,6 +175,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 self.save()
             }
         }
+        hideTabBar(true)
+        hideNavBar(true)
     }
     
     // MARK: cancel the meming process
@@ -169,19 +185,25 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         imagePickerView.image = nil
         configureTextField(textFieldTop, "TOP")
         configureTextField(textFieldBottom, "BOTTOM")
+        hideNavBar(false)
+        let tableViewController = self.storyboard!.instantiateViewController(withIdentifier: "TableViewController") as! TableViewController
+        self.navigationController!.pushViewController(tableViewController, animated: true)
     }
     
     // MARK: setting the textfields with its default texts
     func configureTextField(_ textField: UITextField, _ text: String) {
-            textField.text = text
-            textField.delegate = self
-            textField.defaultTextAttributes = memeTextAttributes
-            textField.textAlignment = .center
+        textField.text = text
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
     }
     
     // MARK: hiding the tabBar and the navigationBar
-    func hide(_ doHide: Bool) {
-            tabBarController?.tabBar.isHidden = doHide
-            navigationController?.navigationBar.isHidden = doHide
+    func hideNavBar(_ doHide: Bool) {
+        navigationController?.navigationBar.isHidden = doHide
+    }
+    
+    func hideTabBar(_ doHide: Bool) {
+        tabBarController?.tabBar.isHidden = doHide
     }
 }
